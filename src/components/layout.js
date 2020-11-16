@@ -1,34 +1,28 @@
 import React from "react"
-import { Link } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun } from '@fortawesome/free-solid-svg-icons'
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
 
   return (
     <div className="global-wrapper">
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <header>
+        <div className="left-menu">
+          <ul>
+            <li>Allister Antosik</li>
+          </ul>
+
+        </div>
+        <div className="right-menu">
+          <ul>
+              <li classname="toggle-sun">
+                <FontAwesomeIcon icon={faSun} size="lg" />
+              </li>
+            </ul>
+
+        </div>
+      </header>
+      <main className="content">{children}</main>
     </div>
   )
 }
